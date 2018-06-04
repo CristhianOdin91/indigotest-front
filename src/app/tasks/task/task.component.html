@@ -1,0 +1,30 @@
+<div *ngIf="task">
+	<form #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && sendTask()" class="row" *ngIf="editMode">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<input type="text" name="name" #name="ngModel" minlength="3" required="required" placeholder="Nombre de la tarea" class="form-control" [(ngModel)]="task.name" [ngClass]="{ 'is-invalid': (name.errors && taskForm.submitted) }">
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<button type="submit" class="btn btn-block btn-outline-success"><i class="fa fa-save"></i> Guardar</button>
+		</div>
+		<div class="col-sm-3">
+			<button type="button" class="btn btn-block btn-outline-dark" (click)="closeEdit()"><i class="fa fa-close"></i> Cancelar</button>
+		</div>
+	</form>
+
+	<div class="row" *ngIf="!editMode">
+		<div class="col-sm-1 check-task">
+			<i class="fa fa-2x {{task.completed ? 'fa-check-square-o' : 'fa-square-o'}}" (click)="checkTask()"></i>
+		</div>
+		<div class="col-sm-5">
+			<p>{{task.name}}</p>
+		</div>
+		<div class="col-sm-3">
+			<button class="btn btn-block btn-outline-warning" (click)="enableEdit()"><i class="fa fa-edit"></i> Editar</button>
+		</div>
+		<div class="col-sm-3">
+			<button class="btn btn-block btn-outline-danger" (click)="eraseTask()"><i class="fa fa-trash"></i> Eliminar</button>
+		</div>
+	</div>
+</div>

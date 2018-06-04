@@ -1,0 +1,15 @@
+button[disabled]{
+	cursor: not-allowed;
+}
+
+.new-task{
+	margin-top: 20px;
+}
+
+.no-tasks{
+	text-align: center;
+}
+
+.search-task{
+	margin-bottom: 20px;
+}

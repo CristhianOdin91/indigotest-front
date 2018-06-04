@@ -1,0 +1,30 @@
+<div>
+	<div class="row search-task">
+		<div class="col-sm-12">
+			<div class="input-group">
+				<div class="input-group-prepend">
+		          <div class="input-group-text"><i class="fa fa-search"></i></div>
+		        </div>
+				<input type="text" placeholder="Buscar" class="form-control" [(ngModel)]="searchQuery" (keyup)="search()">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="!tasks || !tasks.length">
+	<div class="row">
+		<div class="col-sm-12">
+			<p class="text-info no-tasks">No se encontraron tareas</p>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="tasks && tasks.length">
+	<app-task *ngFor="let task of tasks" [task]="task"></app-task>
+</div>
+
+<div class="row new-task">
+	<div class="col-sm-12">
+		<button [disabled]="disableNewTask" type="button" class="btn btn-block btn-outline-info" (click)="newTask()"><i class="fa fa-plus"></i> Nueva tarea</button>
+	</div>
+</div>
